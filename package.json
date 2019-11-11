@@ -1,0 +1,40 @@
+{
+  "name": "@gospime/process-alerts",
+  "version": "1.0.0",
+  "description": "Attach process listeners to alert about halt execution",
+  "keywords": [
+    "gospime",
+    "process",
+    "alert",
+    "listener",
+    "halt"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install && npm audit fix",
+    "up": "npm update",
+    "check": "npm outdated",
+    "upgrade": "npm run up && npm run check && npm run build",
+    "push-version": "standard-version",
+    "ls-g": "npm list -g --depth=0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gospime/process-alerts.git"
+  },
+  "author": "Oleg Kravchuk <oleg.kravchuk@gospime.com> (https://gospime.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gospime/process-alerts/issues"
+  },
+  "homepage": "https://github.com/gospime/process-alerts#readme",
+  "devDependencies": {
+    "standard-version": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "pino": "^5.13.6"
+  }
+}
