@@ -11,11 +11,11 @@ const logger = pino(dest);
 // asynchronously flush every 10 seconds to keep the buffer empty
 // in periods of low activity
 // $FlowFixMe
-setInterval(function () { logger.flush(); }, 10000).unref();
+setInterval(() => logger.flush(), 10000).unref();
 
 // use pino.final to create a special logger that
 // guarantees final tick writes
-const handler = pino.final(logger, function (error, finalLogger, evt) {
+const handler = pino.final(logger, (error, finalLogger, evt) => {
   finalLogger.info(`${evt} caught`);
   if (error) {
     console.error(error);
@@ -28,25 +28,22 @@ const handler = pino.final(logger, function (error, finalLogger, evt) {
 });
 
 // listen for INT signal e.g. Ctrl-C
-process.on('SIGINT', function () { handler(null, 'SIGINT'); });
+process.on('SIGINT', () => handler(null, 'SIGINT'));
 
 // listen for TERM signal .e.g. kill
-process.on('SIGTERM', function () { handler(null, 'SIGTERM'); });
+process.on('SIGTERM', () => handler(null, 'SIGTERM'));
 
 // listen for TERM signal .e.g. kill
-process.on('SIGQUIT', function () { handler(null, 'SIGQUIT'); });
+process.on('SIGQUIT', () => handler(null, 'SIGQUIT'));
 
-process.on('beforeExit', function () { handler(null, 'beforeExit'); });
+process.on('beforeExit', () => handler(null, 'beforeExit'));
 
-process.on('exit', function () { handler(null, 'exit'); });
+process.on('exit', () => handler(null, 'exit'));
 
-process.on('uncaughtException', function (error) {
-  handler(error, 'uncaughtException');
-});
+process.on('uncaughtException', error => handler(error, 'uncaughtException'));
 
 // Windows graceful stop
-process.on('message', function (message) {
+process.on('message', message => {
   if (message !== 'shutdown') return;
   handler(null, 'SHUTDOWN');
 });
-
