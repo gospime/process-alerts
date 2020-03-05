@@ -22,7 +22,7 @@ const handler = pino.final(logger, (error, finalLogger, evt) => {
     finalLogger.error(error, 'error caused exit');
   }
   console.info(
-    `The service node needs to be restarted. Reason: calles signal '${evt}'`
+    `The service node needs to be restarted. Reason: '${evt}' signal was called`
   );
   process.exit(error ? 1 : 0);
 });
@@ -41,6 +41,7 @@ process.on('beforeExit', () => handler(null, 'beforeExit'));
 process.on('exit', () => handler(null, 'exit'));
 
 process.on('uncaughtException', error => handler(error, 'uncaughtException'));
+process.on('unhandledRejection', error => handler(error, 'unhandledRejection'));
 
 // Windows graceful stop
 process.on('message', message => {
