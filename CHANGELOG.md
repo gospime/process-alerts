@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/gospime/process-alerts/compare/v1.1.1...v1.1.2) (2020-03-05)
+
+
+### Bug Fixes
+
+* Catch unhandled rejection ([f53f11f](https://github.com/gospime/process-alerts/commit/f53f11f3990878bcd865310dfdd2b9475a40835d))
+
 ### [1.1.1](https://github.com/gospime/process-alerts/compare/v1.1.0...v1.1.1) (2019-11-12)
 
 
