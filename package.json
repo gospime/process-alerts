@@ -36,5 +36,8 @@
   },
   "dependencies": {
     "pino": "^5.13.6"
+  },
+  "optionalDependencies": {
+    "minimist": "^1.2.5"
   }
 }
