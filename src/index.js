@@ -15,14 +15,14 @@ setInterval(() => logger.flush(), 10000).unref();
 
 // use pino.final to create a special logger that
 // guarantees final tick writes
-const handler = pino.final(logger, (error, finalLogger, evt) => {
-  finalLogger.info(`${evt} caught`);
+const handler = pino.final(logger, (error, finalLogger, signal) => {
+  finalLogger.info(`${signal} caught`);
   if (error) {
     console.error(error);
     finalLogger.error(error, 'error caused exit');
   }
   console.info(
-    `The service node needs to be restarted. Reason: '${evt}' signal was called`
+    `The service node needs to be restarted. '${signal}' signal was called`
   );
   process.exit(error ? 1 : 0);
 });
