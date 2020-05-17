@@ -42,7 +42,8 @@ process.on('exit', () => handler(null, 'exit'));
 
 process.on('uncaughtException', error => handler(error, 'uncaughtException'));
 process.on('unhandledRejection', error => handler(error, 'unhandledRejection'));
-process.on('warning', error => handler(error, 'warning'));
+
+process.on('warning', error => console.log('Catched warning', error));
 
 // Windows graceful stop
 process.on('message', message => {
