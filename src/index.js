@@ -5,7 +5,7 @@
 
 const pino = require('pino');
 
-const dest = pino.extreme();
+const dest = pino.destination({ sync: false });
 const logger = pino(dest);
 
 // asynchronously flush every 10 seconds to keep the buffer empty
