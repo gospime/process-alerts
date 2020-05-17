@@ -1,6 +1,6 @@
 {
   "name": "@gospime/process-alerts",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Attach process listeners to alert about halt execution",
   "keywords": [
     "gospime",
